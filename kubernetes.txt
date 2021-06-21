@@ -1,0 +1,37 @@
+kubectl version
+kubernetes cluster ---> collection of nodes + a master to manage them
+node --> a virtual machine that will run our containers
+pod  --> more or less a running container, can run multiple containers
+deployment  --> monitors a set of pods, make sure they are running and restarts them if they crash
+service  ---> provides an easy to remember URL to access a running container (cluster IP, node port, load balancer, external name)
+    cluster ip - sets up an easy-to-remember URL to access a pod. only axposes pods in the cluster
+    node port - makes a pod accessible from outside the cluster. usually only used for dev purposes
+    load balancer - makes a pod accessible from outside the cluster. this is the right way to user
+    external name - redirects an in-cluster request to CNAME url
+
+kubectl apply -f posts.yaml
+kubectl get pods
+kubectl get deployments
+
+docker ps ---> kubectl get pods
+docker exec -it [container id] [cmd]  --->  kubectl exec -it [pod_name] [cmd]
+docker logs [container id]   ---> kubectl logs [pod_name]
+
+kubectl delete pod [pod_name]
+kubectl apply -f [config file name]
+kubectl describe pod [pod_name]
+kubectl rollout restart deployment posts-depl
+
+if errors after kubectl apply: ErrImagePull, ErrImageNeverPull, ImagePullBackoff Errors
+
+provide imagePullPolicy to the pod:
+    kubectl delete -f infra/k8s/
+    then add imagePullPolicy: Never
+
+    This will ensure that Kubernetes will use the image built locally from your image cache instead 
+    of attempting to pull from a registry.
+
+The real reason of using version 0.0.1 is to tell kubernetes that this is 
+    without version like posts will imply posts:latest and kubernetes will reach out to docker hub to find this image
+    in docker hub
+    by putting 0.0.1 it will assume that this image in locate inside the system where we are running docker

@@ -1,0 +1,8 @@
+docker build .   --> it will dockerfile and will create an image
+docker build -t nitish/posts .    ---> it will create docker image but with a tag
+docker run [image id or image tag]
+docker run -it [image id or image tag] [cmd]<sh>   -> it will run the container but will also override run command, now here it will run a shell
+docker ps --> print out information of all the running containers
+docker exec -it [contaner id] [cmd]<sh>   --> here it will run the container and override the cmd
+docker logs [container id]
+docker push nitishkohadedoc/posts  --> pushed to docker hub, here nitishkohadedoc is my docker hub id
