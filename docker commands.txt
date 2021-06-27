@@ -6,3 +6,35 @@ docker ps --> print out information of all the running containers
 docker exec -it [contaner id] [cmd]<sh>   --> here it will run the container and override the cmd
 docker logs [container id]
 docker push nitishkohadedoc/posts  --> pushed to docker hub, here nitishkohadedoc is my docker hub id
+docker start <id>
+docker create <id>
+docker system prune
+docker stop <id>
+docker kill <id>
+docker run <image> ls  --> here ls will override the actual command present in the image
+
+STDIN STDOUT STDERR
+- it flag 
+so - i mean to enter the cli 
+so -t means to show all the text on the screen
+ 
+-it gets you the access to the shell
+
+docker commit -c 'CMD ["redis-server"]' <container-id>  --> to update thr running container
+docker run -p 8080:8080 <image/name>
+
+docker-compose.yml
+docker compose up -d
+docker compose down
+docker-compose config
+
+docker volume --help
+docker volume create
+docker volume ls
+docker volume inspect
+docker volume rm
+docker volume prune
+
+docker run --name myJenkins1 -v myVol:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins
+
+myvol is being shared by /var/jenkins_home
