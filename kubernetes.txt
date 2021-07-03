@@ -26,6 +26,10 @@ kubectl describe service posts-srv
 kubectl apply -f .
 kubectl rollout restart deployment posts-depl
 
+kubelet
+network-proxy
+statefulset
+
 C:\Windows\System32\drivers\etc\hosts
 
 if errors after kubectl apply: ErrImagePull, ErrImageNeverPull, ImagePullBackoff Errors
